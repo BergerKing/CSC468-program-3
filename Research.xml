@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<data>
+<moldb>
+
+  <molecule>
+      <name> Lord Overwatch (praise be onto it!) </name>
+      <title> Professor at School of Mines</title>
+      <degree> PHD. Computer Science </degree>
+      <university> SDSMT </university>
+	  <research> Multi-Threaded AI Interactions </research>
+	  <website> http://us.battle.net/overwatch/en/ </website>
+  </molecule>
+
+  <molecule>
+      <name> Jason Anderson </name>
+      <title> Master Student at School of Mines</title>
+      <degree> Bachlors in Computer Science </degree>
+      <university> SDSMT </university>
+	  <research> Effects of "Scrub" Exposure </research>
+	  <website> http://us.battle.net/overwatch/en/ </website>
+  </molecule>
+
+</moldb>
+</data>
