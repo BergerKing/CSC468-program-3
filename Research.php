@@ -74,8 +74,23 @@ function addNewResearch ()
 	$gallery->addChild('website', 'info');
 	$gallery->addChild('image', 'info');
 	
-//	print($xml);
+	echo($xml);
 	$xml->asXML($file);
+}
+
+if( isset($_POST['new']) )
+{
+  header("Location: newresearch.php");
+}
+
+else if( isset($_POST['delete']) )
+{
+  header("Location: deleteresearch.php");
+}
+
+else if( isset($_POST['update']) )
+{
+  header("Location: updateresearch.php");
 }
 
 /*
@@ -97,7 +112,17 @@ addNewResearch();
   <center>
     <h1>Research</h1>
   </center>
-  <a href=Colloquium.php>Colloquium</a>
+  <div>
+    <form method="post" action="Research.php">
+      <div style="float:left;">
+        <a href=Colloquium.php>Colloquium</a>
+      </div>
+      <div style="float:right;">
+        <input type="submit" name="new" value="New Research" align="right">
+      </div>
+    </form>
+  </div>
+<br>
 </head>
 <body>
   <div>
@@ -106,7 +131,7 @@ addNewResearch();
 	  
 		//$db = readDatabase("moldb.xml");
 		$db = readDatabase("Research.xml");
-	  
+	  	//addNewResearch();
 		foreach($db as $research)
 		{
 			echo "<hr>";
@@ -115,6 +140,14 @@ addNewResearch();
 			echo "<p>$research->degree, $research->university</p>";
 			echo "<p>Research Areas: $research->research</p>";
 			echo "<a href='$research->website'>$research->website</a>";
+			?>
+			<form method="post" action="Research.php">
+			<p>
+			<input type="submit" name="delete" value="Delete">
+                        <input type="submit" name="update" value="Update">
+			</p>
+			</form>
+			<?php
 		}
       ?>
     </center>

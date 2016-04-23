@@ -58,25 +58,41 @@ function parseMol($mvalues)
 
 }
 
-function addNewResearch ()
+function addNewTest($name, $title, $degree, $university, $research, $website)
 {
-	$file = 'Research.xml';
 
-	$xml = simplexml_load_file($file);
+$file = 'Research.xml';
 
-	$galleries = $xml->moldb;
+$xml = simplexml_load_file('Research.xml');
 
-	$gallery = $galleries->addChild('molecule');
-	$gallery->addChild('name', 'info');
-	$gallery->addChild('title', 'info');
-	$gallery->addChild('degree', 'info');
-	$gallery->addChild('university', 'info');
-	$gallery->addChild('research', 'info');
-	$gallery->addChild('website', 'info');
-	$gallery->addChild('image', 'info');
-	
-//	print($xml);
-	$xml->asXML($file);
+$galleries = $xml->moldb;
+
+$test = $galleries->addChild('molecule');
+$test->addChild('title',$name);
+$test->addChild('time',$title);
+$test->addChild('date',$degree);
+$test->addChild('location',$university);
+$test->addChild('presentor',$research);
+$test->addChild('description',$website);
+
+
+  $xml->asXML();
+  $xml->asXML($file);
+}
+
+if( isset($_POST['new']) )
+{
+  header("Location: newcolloquium.php");
+}
+
+else if( isset($_POST['delete']) )
+{
+  header("Location: deletecolloquium.php");
+}
+
+else if( isset($_POST['update']) )
+{
+  header("Location: updatecolloquium.php");
 }
 
 /*
@@ -98,7 +114,17 @@ addNewResearch();
   <center>
     <h1>Colloquium Schedule</h1>
   </center>
-  <a href=Research.php>Research</a>
+  <div>
+    <form method="post" action="Coloquium.php">
+      <div style="float:left;">
+        <a href=Research.php>Research</a>
+      </div>
+      <div style="float:right;">
+        <input type="submit" name="new" value="New Coloquium Event" align="right">
+      </div>
+    </form>
+  </div>
+<br>
 </head>
 <body>
   <div>
@@ -115,6 +141,14 @@ addNewResearch();
 			echo "<p>$col->time, $col->date, $col->location</p>";
 			echo "<p>$col->presentor</p>";
 			echo "<p>$col->description</p>";
+			?>
+			<form method="post" action="Colloquium.php">
+			<p>
+			<input type="submit" name="delete" value="Delete">
+                        <input type="submit" name="update" value="Update">
+			</p>
+			</form>
+			<?php
 		}
       ?>
     </center>
