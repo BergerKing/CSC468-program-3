@@ -1,7 +1,7 @@
 <!-- PHP contact form that writes to file-->
 <html>
 <head>
-    <title>Contact Marcus</title>
+    <title>Research Form</title>
     <link href="format.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -43,9 +43,11 @@
     <input name="webpage" type="url" value="<?php echo $display['webpage']; ?>" size="30"/><br>
     <br>
     <input name="send" type="submit" value="Add"/> 
-    <br>
-    Please fill in *required fields	
     </form> 
+    <form action="Research.php" method="POST">
+    <input name="canel" type="submit" value="Cancel"/>
+    </form>
+    Please fill in *required fields
 	<?php
 		
 	if(isset($_POST['send']))
@@ -86,10 +88,16 @@
 			$university = $_POST['university'];
 			$research = $_POST['research'];
 			$web = $_POST['webpage'];
+
+			header("Location: Research.php");
 		
 			}
   		}
 	} 
+	else if( isset($_POST['cancel']) )
+	{
+		header("Location: Research.php");
+	}
 	?>
 
 

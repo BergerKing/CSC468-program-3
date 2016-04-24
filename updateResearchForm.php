@@ -1,7 +1,7 @@
 <!-- PHP contact form that writes to file-->
 <html>
 <head>
-    <title>Contact Marcus</title>
+    <title>Update Research</title>
     <link href="format.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -9,12 +9,11 @@
 	
     <?php
 	$display = array(
-    	'name' => 'test',
-    	'degree' => 'test',
-    	'level' => 'test',
-	'university' => 'test U',
-	'research' => 'test, testing, and tested',
-	'webpage' => 'test.com'
+    	'name' => $_REQUEST['title'],
+    	'degree' => $_REQUEST['degree'],
+	'university' => $_REQUEST['university'],
+	'research' => $_REQUEST['research'],
+	'webpage' => $_REQUEST['website']
 	);
 
 	if($_SERVER['REQUEST_METHOD'] == 'POST'){
@@ -32,8 +31,8 @@
     <input name="name" type="text" value="<?php echo $display['name']; ?>" size="30"/><br> 
     *Degree Name:<br> 
     <input name="degree" type="text" value="<?php echo $display['degree']; ?>" size="30"/><br> 
-    *Degree Level:<br> 
-    <input name="level" type="text" value="<?php echo $display['level']; ?>" size="30"/><br>
+    <!--*Degree Level:<br> 
+    <input name="level" type="text" value="<?php echo $display['level']; ?>" size="30"/><br>-->
     *University:<br>
     <input name="university" type="text" value="<?php echo $display['university']; ?>" size="30"/><br>
     *Research Areas:<br>
@@ -43,9 +42,11 @@
     <input name="webpage" type="url" value="<?php echo $display['webpage']; ?>" size="30"/><br>
     <br>
     <input name="send" type="submit" value="Update"/> 
-    <br>
-    Please fill in *required fields	
     </form> 
+    <form action="Research.php" method="POST">
+    <input name="canel" type="submit" value="Cancel"/>
+    </form>
+    Please fill in *required fields
 	<?php
 		
 	if(isset($_POST['send']))
@@ -60,11 +61,11 @@
     			$errorMessage = "Please enter a degree type or title!";
 			echo "$errorMessage <br>";
   		}
-		if(empty($_POST['level'])) 
+		/*if(empty($_POST['level'])) 
   		{
     			$errorMessage = "Please enter a degree level (PhD, Student, Etc...)!";
 			echo "$errorMessage <br>";
-  		}
+  		}*/
 		if(empty($_POST['university'])) 
   		{
     			$errorMessage = "Please enter a university!";
@@ -79,17 +80,23 @@
 		
   		if(empty($errorMessage)) 
   		{
-    			if(isset($_POST['name']) and isset($_POST['degree']) and isset($_POST['level']) and isset($_POST['university']) and isset($_POST['research'])) {
+    			if(isset($_POST['name']) and isset($_POST['degree']) and isset($_POST['university']) and isset($_POST['research'])) {
 			$name = $_POST['name'];
 			$degree = $_POST['degree'];
-			$level = $_POST['level'];
+			//$level = $_POST['level'];
 			$university = $_POST['university'];
 			$research = $_POST['research'];
 			$web = $_POST['webpage'];
+			
+			header("Location: Research.php");
 		
 			}
   		}
 	} 
+	else if( isset($_POST['cancel']) )
+	{
+		header("Location: Research.php");
+	}
 	?>
 
 

@@ -1,7 +1,7 @@
 <!-- PHP contact form that writes to file-->
 <html>
 <head>
-    <title>Contact Marcus</title>
+    <title>Colloquium Form</title>
     <link href="format.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -42,10 +42,12 @@
     *Description<br>
     <input name="description" type="text" value="<?php echo $display['description']; ?>" size="50"/><br>
     <br>
-    <input name="send" type="submit" value="Add"/> 
-    <br>
-    Please fill in *required fields	
-    </form> 
+    <input name="send" type="submit" value="Add"/> 	
+    </form>
+    <form action="Colloquium.php" method="POST">
+    <input name="canel" type="submit" value="Cancel"/>
+    </form>
+    Please fill in *required fields
 	<?php
 		
 	if(isset($_POST['send']))
@@ -84,7 +86,7 @@
 		
   		if(empty($errorMessage)) 
   		{
-    			if(isset($_POST['title']) and isset($_POST['time']) and isset($_POST['date']) and isset($_POST['location']) and isset($_POST['research']) 
+    			if(isset($_POST['title']) and isset($_POST['time']) and isset($_POST['date']) and isset($_POST['location']) and isset($_POST['presenter']) 
 				and isset($_POST['description'])) {
 				$title = $_POST['title'];
 				$time = $_POST['time'];
@@ -93,9 +95,14 @@
 				$presenter = $_POST['presenter'];
 				$description = $_POST['description'];
 		
+				header("Location: Colloquium.php");
 			}
   		}
 	} 
+	else if( isset($_POST['cancel']) )
+	{
+		header("Location: Colloquium.php");
+	}
 	?>
 
 

@@ -12,11 +12,20 @@
 
 	<molecule>
 		<title> Professor at School of Mines</title>
-		<time> 3:00pm </time>
-		<date> 3/11/1999 </date>
+		<time>17:55</time>
+		<date>1999-03-11</date>
 		<location> SDSMT  EEP 252 </location>
-		<presentor> Jason Bader-son </presentor>
+		<presenter>Jason Bader-son</presenter>
 		<description> Just don't come to this is really bad. </description>
+	</molecule>
+
+	<molecule>
+		<title> Professor at School of Mines</title>
+		<time> Lord Overwatch (praise be onto it!) </time>
+		<date> PHD. Computer Science </date>
+		<location> SDSMT </location>
+		<presenter> Multi-Threaded AI Interactions </presenter>
+		<description> http://us.battle.net/overwatch/en/ </description>
 	</molecule>
 
 </moldb>

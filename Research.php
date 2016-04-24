@@ -92,7 +92,7 @@ function addNewResearch ()
 
 if( isset($_POST['new']) )
 {
-  header("Location: newresearch.php");
+  header("Location: researchForm.php");
 }
 
 else if( isset($_POST['delete']) )
@@ -102,7 +102,7 @@ else if( isset($_POST['delete']) )
 
 else if( isset($_POST['update']) )
 {
-  header("Location: updateresearch.php");
+  header("Location: updateResearchForm.php");
 }
 
 /*
@@ -121,7 +121,7 @@ addNewResearch();
 
 <head>
 	<title>MCS Website</title>
-	<link href="Homepage/screen.css" rel="stylesheet" type="text/css" />
+	<link href="HomePage/screen.css" rel="stylesheet" type="text/css" />
 </head>	
 
 <body>
@@ -166,6 +166,16 @@ addNewResearch();
 	  	//addNewResearch();
 		foreach($db as $research)
 		{
+			$ResName = $research->title;
+			$ResName = htmlspecialchars($ResName, ENT_QUOTES);
+			$ResDegr = $research->degree;
+			$ResDegr = htmlspecialchars($ResDegr, ENT_QUOTES);
+			$ResUniv = $research->university;
+			$ResUniv = htmlspecialchars($ResUniv, ENT_QUOTES);
+			$ResArea = $research->research;
+			$ResArea = htmlspecialchars($ResArea, ENT_QUOTES);
+			echo "<form method='post' action='updateResearchForm.php?title=$ResName&degree=$ResDegr&university=$ResUniv&research=$ResArea&website=$research->website'>";
+			$childName = $research->title + "Text";
 			echo "<div class = 'dropDown' onclick='expandInfo(this)'>";
 			echo "<p align = left class ='left'>$research->title</p>";
 			echo "<div class = 'displayText'>";
@@ -174,14 +184,13 @@ addNewResearch();
 			echo "<p>$research->degree, $research->university</p>";
 			echo "<p>Research Areas: $research->research</p>";
 			echo "<a href='$research->website'>$research->website</a>";
-			echo "<form method='post' action='Colloquium.php'>";
 			echo "<p>";
 			echo "<input type='submit' name='delete' value='Delete'>";
-            echo "<input type='submit' name='update' value='Update'>";
+           		echo "<input type='submit' name='update' value='Update'>";
 			echo "</p>";
+			echo "</div>";
+			echo "</div>";
 			echo "</form>";
-			echo "</div>";
-			echo "</div>";
 			echo "<br><br>";
 		}
       ?>

@@ -93,17 +93,17 @@ $test->addChild('description',$website);
 
 if( isset($_POST['new']) )
 {
-  header("Location: newcolloquium.php");
+  header("Location: colloquiumForm.php");
 }
 
 else if( isset($_POST['delete']) )
 {
-  header("Location: deletecolloquium.php");
+  header("Location: Colloquium.php");
 }
 
 else if( isset($_POST['update']) )
 {
-  header("Location: updatecolloquium.php");
+  header("Location: updateColloquiumForm.php");
 }
 
 /*
@@ -121,7 +121,7 @@ addNewResearch();
 ?>
 
 <head>
-<link href="Homepage/screen.css" rel="stylesheet" type="text/css" />
+<link href="HomePage/screen.css" rel="stylesheet" type="text/css" />
 <title>MCS Website</title>
 </head>
 	
@@ -170,6 +170,15 @@ addNewResearch();
 	  
 		foreach($db as $col)
 		{
+			$ColTitle = $col->title;
+			$ColTitle = htmlspecialchars($ColTitle, ENT_QUOTES);
+			$ColName = $col->presenter;
+			$ColName = htmlspecialchars($ColName, ENT_QUOTES);
+			$ColLoca = $col->location;
+			$ColLoca = htmlspecialchars($ColLoca, ENT_QUOTES);
+			$ColDesc = $col->description;
+			$ColDesc = htmlspecialchars($ColDesc, ENT_QUOTES);
+			echo "<form method='post' action='updateColloquiumForm.php?title=$ColTitle&time=$col->time&date=$col->date&location=$ColLoca&presenter=$ColName&description=$ColDesc'>";
 			$childName = $col->title + "Text";
 			echo "<div class = 'dropDown' onclick='expandInfo(this)'>";
 			echo "<p align = left class ='left'>$col->title</p>";
@@ -177,19 +186,19 @@ addNewResearch();
 			echo "<hr>";
 			echo "<p>$col->title</p>";
 			//Presenter photo here?
-			echo "<p>$col->time, $col->date, $col->location</p>";
-			echo "<p>$col->presentor</p>";
+			$StandardHourTime = date("g:i a", strtotime("$col->time"));
+			echo "<p>$StandardHourTime, $col->date, $col->location</p>";
+			echo "<p>$col->presenter</p>";
 			echo "<p>$col->description</p>";
-			
-			
-			echo "<form method='post' action='Colloquium.php'>";
+					
 			echo "<p>";
 			echo "<input type='submit' name='delete' value='Delete'>";
-            echo "<input type='submit' name='update' value='Update'>";
+           		echo "<input type='submit' name='update' value='Update'>";
 			echo "</p>";
+			
+			echo "</div>";
+			echo "</div>";
 			echo "</form>";
-			echo "</div>";
-			echo "</div>";
 			echo "<br><br>";
 		}
       ?>
