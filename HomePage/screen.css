@@ -10,7 +10,7 @@ body {
 	background-attachment: fixed;
 	background-repeat:no-repeat;
 	background-size:cover;
-	background-image: url(/home-image.jpg);
+	background-image: url(home-image.jpg);
 }
 a {
 	color:#369;
@@ -193,21 +193,20 @@ li:last-child {
 .white-text{
 	color: white;
 }
-#about{
+.dropDown{
 	border-style: solid;
 	border-bottom-width: 0.5%;
 	background-color: #f1f1f1;
 	border-color: #000066;
 	font-size:150%;
-	height: 10%;
+	
 	width: 75%;
 	
 }
-#about:hover {
+.dropDown:hover {
 	border-style: inset;
 	border-bottom-width: .5%;
 	border-color: #f1f1f1;
-	height: 10%;
 	width: 75%;
 }
 .left{
@@ -216,7 +215,7 @@ li:last-child {
 	
 }
 
-#aboutText{
+.displayText{
 	font-size: 75%;
 	display: none;
 }
@@ -224,4 +223,7 @@ li:last-child {
 #degreeText{
 	font-size: 75%;
 	display: none;
+}
+.newButton{
+	padding-left: 26%;
 }

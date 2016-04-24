@@ -1,8 +1,19 @@
 <html>
 
+<script>
+function expandInfo(elmnt) {
+var txt = "";
+	var child = elmnt.childNodes;
+	if(child[1].style.display == "block")
+		child[1].style.display = "none";
+	else
+		child[1].style.display = "block";
+
+}
+</script>
+
+
 <?php
-
-
 class Colloquium {
     var $title;
     var $time;
@@ -109,49 +120,91 @@ addNewResearch();
 
 ?>
 
-<title> Colloquium </title>
 <head>
-  <center>
-    <h1>Colloquium Schedule</h1>
-  </center>
-  <div>
-    <form method="post" action="Coloquium.php">
-      <div style="float:left;">
-        <a href=Research.php>Research</a>
-      </div>
-      <div style="float:right;">
-        <input type="submit" name="new" value="New Coloquium Event" align="right">
-      </div>
-    </form>
-  </div>
-<br>
+<link href="Homepage/screen.css" rel="stylesheet" type="text/css" />
+<title>MCS Website</title>
 </head>
+	
+
 <body>
-  <div>
-    <center>
+<div id="header">
+		<img src="HomePage/MCS-Logo.png" alt="MCS Logo">
+	</div>
+	<div  class="colmid">
+		<ul class="menu">
+			<li><a href="http://www.sdsmt.edu/">SDSM&T Home</a></li>
+			<li><a href="https://wa-sdsmt.prod.sdbor.edu/WebAdvisor/webadvisor">Web Advisor</a></li>
+			<li><a href="outside.html">Submit It</a></li>
+			<li><a href="outside.html">Faculty, Student, and Alumni</a></li>
+			<li><a href="outside.html">Department Directory</a></li>
+			<li><a href="outside.html">Building Map</a></li>
+			<li><a href="outside.html">CS Courses</a></li>
+			<li><a href="outside.html">Math Courses</a></li>
+			<li><a href="outside.html">CS Checklist</a></li>
+			<li><a href="outside.html">CS Flowchart</a></li>
+			<li><a href="outside.html">CS Scheduler</a></li>
+			<li><a href="outside.html">MCS Colloquium</a></li>
+			<li><a href="outside.html">Research</a></li>
+			<li><a href="outside.html">Student Organizations</a></li>
+			<li><a href="outside.html">Tutorials</a></li>
+			<li><a href="outside.html">Forms, Coding Standards, and Policy</a></li>
+		</ul>
+	</div>
+
+<br><br><br><br><br><br><br>
+	<form method="post" action="Colloquium.php">
+      
+		<div class = "newButton">
+		<input type="submit" name="new" value="New Colloquium" align="right">
+		</div>
+    </form>
+	
+	<center>
+  <div class ="info">
+
+		
+  
       <?php
 	  
 		$db = readDatabase("Colloquium.xml");
 	  
 		foreach($db as $col)
 		{
+			$childName = $col->title + "Text";
+			echo "<div class = 'dropDown' onclick='expandInfo(this)'>";
+			echo "<p align = left class ='left'>$col->title</p>";
+			echo "<div class = 'displayText'>";
 			echo "<hr>";
 			echo "<p>$col->title</p>";
 			//Presenter photo here?
 			echo "<p>$col->time, $col->date, $col->location</p>";
 			echo "<p>$col->presentor</p>";
 			echo "<p>$col->description</p>";
-			?>
-			<form method="post" action="Colloquium.php">
-			<p>
-			<input type="submit" name="delete" value="Delete">
-                        <input type="submit" name="update" value="Update">
-			</p>
-			</form>
-			<?php
+			
+			
+			echo "<form method='post' action='Colloquium.php'>";
+			echo "<p>";
+			echo "<input type='submit' name='delete' value='Delete'>";
+            echo "<input type='submit' name='update' value='Update'>";
+			echo "</p>";
+			echo "</form>";
+			echo "</div>";
+			echo "</div>";
+			echo "<br><br>";
 		}
       ?>
-    </center>
+	  
+	  
   </div>
+  </center>
+  
+  
+  	<div id = "footer">
+	<p class = "white-text">605.394.2471 | <a href="mailto:kyle.riley@sdsmt.edu" onfocus="this.blur()" class = "white-text">email</a></p>
+	</div>
+	<br>
+	<br>
+	<br>
+	<br>
 </body>
 </html>
