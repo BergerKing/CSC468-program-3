@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+
+<script>
+function expandInfo(elmnt) {
+	if(document.getElementById(elmnt).style.display == "none")
+		document.getElementById(elmnt).style.display = "block";
+	else
+		document.getElementById(elmnt).style.display = "none";
+}
+function myFunction() {
+    window.alert(5 + 6);             // The function returns the product of p1 and p2
+}
+</script>
+
+<head>
+    <title>MCS Website</title>
+    <link href="screen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+	<div id="header">
+		<img src="MCS-Logo.png" alt="MCS Logo">
+	</div>
+	<div  class="colmid">
+		<ul class="menu">
+			<li><a href="http://www.sdsmt.edu/">SDSM&T Home</a></li>
+			<li><a href="https://wa-sdsmt.prod.sdbor.edu/WebAdvisor/webadvisor">Web Advisor</a></li>
+			<li><a href="outside.html">Submit It</a></li>
+			<li><a href="outside.html">Faculty, Student, and Alumni</a></li>
+			<li><a href="outside.html">Department Directory</a></li>
+			<li><a href="outside.html">Building Map</a></li>
+			<li><a href="outside.html">CS Courses</a></li>
+			<li><a href="outside.html">Math Courses</a></li>
+			<li><a href="outside.html">CS Checklist</a></li>
+			<li><a href="outside.html">CS Flowchart</a></li>
+			<li><a href="outside.html">CS Scheduler</a></li>
+			<li><a href="outside.html">MCS Colloquium</a></li>
+			<li><a href="outside.html">Research</a></li>
+			<li><a href="outside.html">Student Organizations</a></li>
+			<li><a href="outside.html">Tutorials</a></li>
+			<li><a href="outside.html">Forms, Coding Standards, and Policy</a></li>
+		</ul>
+	</div>	
+	<center>
+
+	<div class ="info">
+	<br><br><br><br>
+	<div id = "about" onclick="expandInfo('aboutText')">
+		<p align = left class ="left">About</p>
+		<div id = "aboutText">
+		<hr>
+		The Department of Mathematics and Computer Science (MCS) invites students to prepare for some of the most coveted jobs and most important advances in technology today, by pursuing the degrees we offer in computer science, applied mathematics, and robotics:
+	
+		</div>
+	</div>
+	<br>
+	<br>
+	<div id = "about" onclick="expandInfo('degreeText')">
+		<p align = left class ="left">Degrees</p>
+		<div id = "degreeText">
+		<hr>
+			<p class ="info">The Department of Mathematics and Computer Science (MCS) invites students to prepare for some of the most coveted jobs and most important advances in technology today, by pursuing the degrees we offer in computer science, applied mathematics, and robotics:</p>
+
+		<ul>
+			<li >BS in computer science</li>
+			<li>BS in applied and computational mathematics</li>
+			<li>MS in computational sciences and robotics</li>
+		</ul>
+		
+		<p class ="info">Our BS computer science degree is accredited by the Computing Accreditation Commission of ABET,<a href="http://www.abet.org.">http://www.abet.org.</a></p>
+		<p class ="info">Our department takes great pride in our degree and active research programs that span a variety of disciplines. The department values high-quality teaching 
+		and we currently have five faculty members that have earned awards for excellence in teaching. We also provide many unique experiences where students can readily 
+		participate in a research projects, compete in academic competitions, or join one of our professional society student chapters.
+
+		Our department is expanding and seeks new faculty members in Computer Science with an expected start date of fall semester, 2016.  Find out more.
+
+		We hope you will explore our site further to learn more about the department and our degree programs. Please contact us if you have questions or 
+		need more information.</p>
+		</div>
+	</div>
+		
+	</div>
+	 </center>
+	
+	<div id = "footer">
+	<p class = "white-text">605.394.2471 | <a href="mailto:kyle.riley@sdsmt.edu" onfocus="this.blur()" class = "white-text">email</a></p>
+	</div>
+	<br>
+	<br>
+	<br>
+	<br>
+</body>
+
+
+
+</html>
+
+

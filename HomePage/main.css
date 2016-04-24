@@ -1,0 +1,90 @@
+
+body {
+    font:normal 12px/1.6em Arial, Helvetica, sans-serif;
+	color:Black;
+	background:##EEEDEB;
+	min-height:100%;
+	
+}
+
+#left-column {
+	width:70%;
+	min-height:100%;
+	height:100%;
+	padding:0 5px 5px;
+	float:left;
+}
+
+#right-column {
+	width:500px;
+	float:right;
+	
+}
+
+ul.menu {
+    float: left;
+	list-style-type: none;
+    margin: 0;
+    padding: 0px 0px 1px;
+    width: 150px;
+	border: 1px solid #011C4F;
+	position: fixed; 
+    overflow: auto; 
+    background-color: #f1f1f1;
+}
+
+li a {
+    display: block;
+    color: #000;
+    padding: 8px 0 8px 16px;
+    text-decoration: none;
+	border-bottom: 1px solid #555;
+}
+
+li:last-child {
+    border-bottom: none;
+}
+
+/* Change the link color on hover */
+li a:hover {
+    background-color: #011C4F;
+    color: #FFFFFF;
+}
+
+.active {
+    background-color: #011C4F;
+    color: white;
+}
+
+#pageFooter {
+  clear: both;
+  width: 906px;
+  height: 22px;
+  _height: 30px;
+  padding: 4px 0px;
+  text-align: center;
+  background: #555555 url(../images/bg-foot.png) no-repeat left top;
+  color: #CCCCCC;
+}
+
+#pageFooter p {
+  margin: 0px;
+  padding: 0px;
+}
+
+#pageFooter a:link, #pageFooter a:visited {
+  color: #FFCC03;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+#pageFooter a:hover {
+  color: #BBBBBB;
+  text-decoration: underline;
+}
+
+#info{
+	float: right;
+	height: 100px;
+	width: 400x;
+}
