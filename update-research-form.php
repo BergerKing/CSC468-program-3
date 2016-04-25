@@ -126,7 +126,7 @@ function updateResearch($name, $degree, $level, $university, $research, $web)
     		}
       }
     }
-    $titleToRemove = (string)$_REQUEST['name'];
+    $titleRemove = (string)$_REQUEST['name'];
     ?>
 
     <?php
@@ -153,7 +153,7 @@ function updateResearch($name, $degree, $level, $university, $research, $web)
 
     <!--Button to delete the research-->
     <?php    
-	  echo "<form action='update-research-form.php?oldtitle=$titleToRemove' method='POST'>";
+    echo "<form action='update-research-form.php?oldtitle=$titleRemove' method='POST'>";
     echo "<input type='submit' name='delete' value='Delete'>";
     echo "</form>"; 
     ?>
