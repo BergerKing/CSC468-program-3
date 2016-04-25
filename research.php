@@ -71,7 +71,7 @@ function parseMol($mvalues)
 
 function addNewRes ()
 {
-	$file = 'Research.xml';
+	$file = 'research.xml';
 
 	$xml = simplexml_load_file($file);
 
@@ -91,7 +91,7 @@ function addNewRes ()
 
 if( isset($_POST['new']) )
 {
-  header("Location: researchForm.php");
+  header("Location: research-form.php");
 }
 
 else if( isset($_POST['delete']) )
@@ -101,7 +101,7 @@ else if( isset($_POST['delete']) )
 
 else if( isset($_POST['update']) )
 {
-  header("Location: updateResearchForm.php");
+  header("Location: update-research-form.php");
 }
 
 /*
@@ -178,6 +178,7 @@ if(isset($_POST['send']))
 	<div  class="colmid">
 		<ul class="menu">
 			<li><a href="http://www.sdsmt.edu/">SDSM&T Home</a></li>
+			<li><a href="HomePage/homepage.html">MCS Home</a></li>
 			<li><a href="https://wa-sdsmt.prod.sdbor.edu/WebAdvisor/webadvisor">Web Advisor</a></li>
 			<li><a href="outside.html">Submit It</a></li>
 			<li><a href="outside.html">Faculty, Student, and Alumni</a></li>
@@ -188,8 +189,8 @@ if(isset($_POST['send']))
 			<li><a href="outside.html">CS Checklist</a></li>
 			<li><a href="outside.html">CS Flowchart</a></li>
 			<li><a href="outside.html">CS Scheduler</a></li>
-			<li><a href="outside.html">MCS Colloquium</a></li>
-			<li><a href="outside.html">Research</a></li>
+			<li><a href="colloquium.php">MCS Colloquium</a></li>
+			<li><a href="research.php">Research</a></li>
 			<li><a href="outside.html">Student Organizations</a></li>
 			<li><a href="outside.html">Tutorials</a></li>
 			<li><a href="outside.html">Forms, Coding Standards, and Policy</a></li>
@@ -197,7 +198,7 @@ if(isset($_POST['send']))
 	</div>
 
 <br><br><br><br><br><br><br>
-	<form method="post" action="Research.php">
+	<form method="post" action="research.php">
       
 		<div class = "newButton">
 		<input type="submit" name="new" value="New Research" align="right">
@@ -208,7 +209,7 @@ if(isset($_POST['send']))
   <div class ="info">
 		<?php
 	  
-		$db = readDatabase("Research.xml");
+		$db = readDatabase("research.xml");
 		foreach($db as $research)
 		{
 			$ResName = $research->name;
@@ -221,7 +222,7 @@ if(isset($_POST['send']))
 			$ResUniv = htmlspecialchars($ResUniv, ENT_QUOTES);
 			$ResArea = $research->research;
 			$ResArea = htmlspecialchars($ResArea, ENT_QUOTES);
-			echo "<form method='post' action='updateResearchForm.php?name=$ResName&title=$ResTitle&degree=$ResDegr&university=$ResUniv&research=$ResArea&website=$research->website'>";
+			echo "<form method='post' action='update-research-form.php?name=$ResName&title=$ResTitle&degree=$ResDegr&university=$ResUniv&research=$ResArea&website=$research->website'>";
 			
 			echo "<div class = 'dropDown' onclick='expandInfo(this)'>";
 			echo "<p align = left class ='left'> $research->name</p>";

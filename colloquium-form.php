@@ -1,10 +1,69 @@
 <!-- PHP contact form that writes to file-->
 <html>
+
+<?php
+
+
+function addNewCol($title, $time, $date, $location, $presentor, $description)
+{
+
+
+$file = 'colloquium.xml';
+
+	$xml = simplexml_load_file($file);
+
+	$galleries = $xml->moldb;
+
+	$test = $xml->addChild('molecule');
+	$test->addChild('title',$title);
+	$test->addChild('time',$time);
+	$test->addChild('date',$date);
+	$test->addChild('location',$location);
+	$test->addChild('presentor',$presentor);
+	$test->addChild('description',$description);
+		
+	$xml->asXML($file);
+}
+
+
+
+?>
+
 <head>
-    <title>Colloquium Form</title>
-    <link href="format.css" rel="stylesheet" type="text/css" />
+<link href="HomePage/screen.css" rel="stylesheet" type="text/css" />
+<title>MCS Website</title>
 </head>
+	
+
 <body>
+<div id="header">
+		<img src="HomePage/MCS-Logo.png" alt="MCS Logo">
+	</div>
+	<div  class="colmid">
+		<ul class="menu">
+			<li><a href="http://www.sdsmt.edu/">SDSM&T Home</a></li>
+			<li><a href="HomePage/homepage.html">MCS Home</a></li>
+			<li><a href="https://wa-sdsmt.prod.sdbor.edu/WebAdvisor/webadvisor">Web Advisor</a></li>
+			<li><a href="outside.html">Submit It</a></li>
+			<li><a href="outside.html">Faculty, Student, and Alumni</a></li>
+			<li><a href="outside.html">Department Directory</a></li>
+			<li><a href="outside.html">Building Map</a></li>
+			<li><a href="outside.html">CS Courses</a></li>
+			<li><a href="outside.html">Math Courses</a></li>
+			<li><a href="outside.html">CS Checklist</a></li>
+			<li><a href="outside.html">CS Flowchart</a></li>
+			<li><a href="outside.html">CS Scheduler</a></li>
+			<li><a href="colloquium.php">MCS Colloquium</a></li>
+			<li><a href="research.php">Research</a></li>
+			<li><a href="outside.html">Student Organizations</a></li>
+			<li><a href="outside.html">Tutorials</a></li>
+			<li><a href="outside.html">Forms, Coding Standards, and Policy</a></li>
+		</ul>
+	</div>
+
+<br><br><br><br><br><br><br>
+<center>
+<div class ="info" id = "whiteBox">
     <div class="box">
 	
     <?php
@@ -25,8 +84,9 @@
     		}
 	}
 	?>
-
-    <form  action="colloquiumForm.php" method="POST" enctype="multipart/form-data"> 
+	<p class = "titleText"> Colloquium </p>
+	<hr>
+    <form  action="colloquium-form.php" method="POST" enctype="multipart/form-data"> 
     <input type="hidden" name="action" value="submit"> 
     *Colloquium Title:<br> 
     <input name="title" type="text" value="<?php echo $display['title']; ?>" size="30"/><br> 
@@ -44,7 +104,7 @@
     <br>
     <input name="send" type="submit" value="Add"/> 	
     </form>
-    <form action="Colloquium.php" method="POST">
+    <form action="colloquium.php" method="POST">
     <input name="canel" type="submit" value="Cancel"/>
     </form>
     Please fill in *required fields
@@ -94,21 +154,22 @@
 				$location = $_POST['location'];
 				$presenter = $_POST['presenter'];
 				$description = $_POST['description'];
-		
-				header("Location: Colloquium.php");
+				addNewCol($title, $time, $date, $location, $presenter, $description);
+				header("Location: colloquium.php");
 			}
   		}
 	} 
 	else if( isset($_POST['cancel']) )
 	{
-		header("Location: Colloquium.php");
+		header("Location: colloquium.php");
 	}
 	?>
 
 
 
      </div>
-
+</div>
+</center>
 </body>
 </html>
 

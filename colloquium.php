@@ -36,7 +36,7 @@ function removeEntry($title)
 {
 
 	$doc = new DOMDocument();
-	$doc->Load('Colloquium.xml');
+	$doc->Load('colloquium.xml');
 	$to_remove = array();
 
     foreach ($doc->getElementsByTagName('moldb') as $tagcourses)
@@ -64,7 +64,7 @@ function removeEntry($title)
     {
        $node->parentNode->removeChild($node);
     }
- $doc->Save('Colloquium.xml');
+ $doc->Save('colloquium.xml');
  $doc->Save();
 
 }
@@ -111,7 +111,7 @@ function addNewCol($title, $time, $date, $location, $presentor, $description)
 {
 
 
-$file = 'Colloquium.xml';
+$file = 'colloquium.xml';
 
 	$xml = simplexml_load_file($file);
 
@@ -170,6 +170,7 @@ $thing = 'Professor at School of Mines';
 	<div  class="colmid">
 		<ul class="menu">
 			<li><a href="http://www.sdsmt.edu/">SDSM&T Home</a></li>
+			<li><a href="HomePage/homepage.html">MCS Home</a></li>
 			<li><a href="https://wa-sdsmt.prod.sdbor.edu/WebAdvisor/webadvisor">Web Advisor</a></li>
 			<li><a href="outside.html">Submit It</a></li>
 			<li><a href="outside.html">Faculty, Student, and Alumni</a></li>
@@ -180,8 +181,8 @@ $thing = 'Professor at School of Mines';
 			<li><a href="outside.html">CS Checklist</a></li>
 			<li><a href="outside.html">CS Flowchart</a></li>
 			<li><a href="outside.html">CS Scheduler</a></li>
-			<li><a href="outside.html">MCS Colloquium</a></li>
-			<li><a href="outside.html">Research</a></li>
+			<li><a href="colloquium.php">MCS Colloquium</a></li>
+			<li><a href="research.php">Research</a></li>
 			<li><a href="outside.html">Student Organizations</a></li>
 			<li><a href="outside.html">Tutorials</a></li>
 			<li><a href="outside.html">Forms, Coding Standards, and Policy</a></li>
@@ -189,7 +190,7 @@ $thing = 'Professor at School of Mines';
 	</div>
 
 <br><br><br><br><br><br><br>
-	<form method="post" action="colloquiumForm.php">
+	<form method="post" action="colloquium-form.php">
       
 		<div class = "newButton">
 		<input type="submit" name="new" value="New Colloquium" align="right">
@@ -203,7 +204,7 @@ $thing = 'Professor at School of Mines';
   
       <?php
 	  
-		$db = readDatabase("Colloquium.xml");
+		$db = readDatabase("colloquium.xml");
 	  
 		foreach($db as $col)
 		{
@@ -215,7 +216,7 @@ $thing = 'Professor at School of Mines';
 			$ColLoca = htmlspecialchars($ColLoca, ENT_QUOTES);
 			$ColDesc = $col->description;
 			$ColDesc = htmlspecialchars($ColDesc, ENT_QUOTES);
-			echo "<form method='post' action='updateColloquiumForm.php?title=$ColTitle&time=$col->time&date=$col->date&location=$ColLoca&presenter=$ColName&description=$ColDesc'>";
+			echo "<form method='post' action='update-colloquium-form.php?title=$ColTitle&time=$col->time&date=$col->date&location=$ColLoca&presenter=$ColName&description=$ColDesc'>";
 			$childName = $col->title + "Text";
 			echo "<div class = 'dropDown' onclick='expandInfo(this)'>";
 			echo "<p align = left class ='left'>$col->title</p>";

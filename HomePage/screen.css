@@ -227,3 +227,12 @@ li:last-child {
 .newButton{
 	padding-left: 26%;
 }
+#whiteBox{
+	border-style: solid;
+	border-bottom-width: 0.5%;
+	background-color: #f1f1f1;
+	border-color: #000066;
+}
+.titleText{
+	font-size: 150%;
+}

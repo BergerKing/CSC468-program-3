@@ -4,13 +4,6 @@
 	
 
 	
-<molecule>
-		<title> Professor at School of Mines</title>
-		<time> 3:00pm </time>
-		<date> 3/11/1999 </date>
-		<location> SDSMT  EEP 252 </location>
-		<presentor> Jason Bader-son </presentor>
-		<description> Just don't come to this is really bad. </description>
-	</molecule>
 
-<molecule><title> Pofessor at School of Mines</title><time>01:00</time><date>2016-01-01</date><location> SDSMT </location><presentor>asdfasdf</presentor><description> http://us.battle.net/overwatch/en/</description></molecule><molecule><title>School of Mines</title><time>01:00</time><date>2016-01-01</date><location> SDSMT  EEP 252 </location><presentor> Jason Bader-son </presentor><description> Just don't come to this is really bad.</description></molecule></moldb>
+
+<molecule><title>Scorigami</title><time>11:00</time><date>2016-04-12</date><location>McLaury 205</location><presentor>Caitlin Taggart</presentor><description>A scorigami is a mathematical construct made from folding an idealized piece over a sequence of staight-line creases, making a single straight-line cut through the folded paper and then unfolding the paper to determine the types of shapes that result. In this presentation, we formulate a geometric and algebraic model for scorigami using complex geometry. Using this model, we define the notion of a contractive fold, and show that any symmetric, convex polygon can be formed from scorigami through a finite sequence of contractive folds.</description></molecule><molecule><title>Strategies in Baseball: A Markov Chain Approach</title><time>11:00</time><date>2016-04-12</date><location>McLaury 205</location><presentor>Dalton Franck</presentor><description>Markov chains can be used to model a number of real-world situations, including sports. In this talk we focus on applications to baseball. Using Markov chains and historic baseball data, conclusions can be drawn for example, as to whether or not sacrifice bunting or base stealing are good strategies.</description></molecule><molecule><title>Different Species of Fibonacci's Rabbits</title><time>11:00</time><date>2016-04-05</date><location>McLaury 205</location><presentor>Matthew Dyke</presentor><description>The classic Fibonacci rabbit problem involves a population of pairs of rabbits that take one month to mature, and then produce a litter of one breeding pair every month forever after. In this presentation, we examine the effects of changing three parameters of these rabbits: the rate of maturation, the size of the litters, and their total life expectancy. We devise a recursion relation for the population of Fibonacci rabbits in terms of these parameters. We also investigate whether or not it is possible to uniquely determin these parameters given only data on the total monthly population of rabbits after a specific (but unknown) duration of time.</description></molecule></moldb>
