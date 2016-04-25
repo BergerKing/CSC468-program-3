@@ -192,8 +192,11 @@ addNewResearch();
 			echo "<p>$col->description</p>";
 					
 			echo "<p>";
-			echo "<input type='submit' name='delete' value='Delete'>";
-           		echo "<input type='submit' name='update' value='Update'>";
+			//if(User::hasPermission("ColloquiumPermission"))
+			//{
+				echo "<input type='submit' name='delete' value='Delete'>";
+           			echo "<input type='submit' name='update' value='Update'>";
+			//}
 			echo "</p>";
 			
 			echo "</div>";

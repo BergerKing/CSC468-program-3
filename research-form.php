@@ -26,14 +26,15 @@
 	}
 	?>
 
-    <form  action="researchForm.php" method="POST" enctype="multipart/form-data"> 
+    <!--<form  action="Research.php?title=name&degree=degree&university=university&research=research&website=webpage'" method="POST" enctype="multipart/form-data"> -->
+    <form  action="ContinueResearch.html" method="POST" enctype="multipart/form-data"> 
     <input type="hidden" name="action" value="submit"> 
     *Name:<br> 
     <input name="name" type="text" value="<?php echo $display['name']; ?>" size="30"/><br> 
     *Degree Name:<br> 
     <input name="degree" type="text" value="<?php echo $display['degree']; ?>" size="30"/><br> 
-    *Degree Level:<br> 
-    <input name="level" type="text" value="<?php echo $display['level']; ?>" size="30"/><br>
+    <!--*Degree Level:<br> 
+    <input name="level" type="text" value="<?php //echo $display['level']; ?>" size="30"/><br>-->
     *University:<br>
     <input name="university" type="text" value="<?php echo $display['university']; ?>" size="30"/><br>
     *Research Areas:<br>
@@ -89,7 +90,7 @@
 			$research = $_POST['research'];
 			$web = $_POST['webpage'];
 
-			header("Location: Research.php");
+			header("Location: ContinueResearch.html");
 		
 			}
   		}
