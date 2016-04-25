@@ -31,6 +31,45 @@ class Colloquium {
 	
 }
 
+
+function removeEntry($title)
+{
+
+	$doc = new DOMDocument();
+	$doc->Load('Colloquium.xml');
+	$to_remove = array();
+
+    foreach ($doc->getElementsByTagName('moldb') as $tagcourses)
+    {
+	
+	//$tagcourses->molecule;
+       foreach ( $tagcourses ->getElementsByTagName('molecule') as $tagcourse)
+       {
+	
+		$thing = $tagcourse ->getElementsByTagName('title');
+		$length = $tagcourse ->getElementsByTagName('title')->length;
+		
+		if(strcmp((string)$thing->item($indexX)->nodeValue , $title) == 0){
+         		$to_remove[] = $tagcourse;
+         	}
+
+
+       }
+    }
+	
+
+    // Remove the nodes stored in your array
+    // by removing it from its parent
+    foreach ($to_remove as $node)
+    {
+       $node->parentNode->removeChild($node);
+    }
+ $doc->Save('Colloquium.xml');
+ $doc->Save();
+
+}
+
+
 function readDatabase($filename) 
 {
     // read the XML database of aminoacids
@@ -64,46 +103,40 @@ function parseMol($mvalues)
     for ($i=0; $i < count($mvalues); $i++) {
         $mol[$mvalues[$i]["tag"]] = $mvalues[$i]["value"];
     }
-//    return new AminoAcid($mol);
 	return new Colloquium($mol);
 
 }
 
-function addNewTest($name, $title, $degree, $university, $research, $website)
+function addNewCol($title, $time, $date, $location, $presentor, $description)
 {
 
-$file = 'Research.xml';
 
-$xml = simplexml_load_file('Research.xml');
+$file = 'Colloquium.xml';
 
-$galleries = $xml->moldb;
+	$xml = simplexml_load_file($file);
 
-$test = $galleries->addChild('molecule');
-$test->addChild('title',$name);
-$test->addChild('time',$title);
-$test->addChild('date',$degree);
-$test->addChild('location',$university);
-$test->addChild('presentor',$research);
-$test->addChild('description',$website);
+	$galleries = $xml->moldb;
 
-
-  $xml->asXML();
-  $xml->asXML($file);
+	$test = $xml->addChild('molecule');
+	$test->addChild('title',$title);
+	$test->addChild('time',$time);
+	$test->addChild('date',$date);
+	$test->addChild('location',$location);
+	$test->addChild('presentor',$presentor);
+	$test->addChild('description',$description);
+		
+	$xml->asXML($file);
 }
 
 if( isset($_POST['new']) )
 {
-  header("Location: colloquiumForm.php");
+  header("Location: newcolloquium.php");
 }
 
-else if( isset($_POST['delete']) )
-{
-  header("Location: Colloquium.php");
-}
 
 else if( isset($_POST['update']) )
 {
-  header("Location: updateColloquiumForm.php");
+  header("Location: updatecolloquium.php");
 }
 
 /*
@@ -117,6 +150,10 @@ echo("<br><br>");
 print_r($db[1]->title);
 addNewResearch();
 */
+
+//addNewCol('info','info','info','info','info','info');
+$thing = 'Professor at School of Mines';
+//removeEntry($thing);
 
 ?>
 
@@ -152,7 +189,7 @@ addNewResearch();
 	</div>
 
 <br><br><br><br><br><br><br>
-	<form method="post" action="Colloquium.php">
+	<form method="post" action="colloquiumForm.php">
       
 		<div class = "newButton">
 		<input type="submit" name="new" value="New Colloquium" align="right">
@@ -172,7 +209,7 @@ addNewResearch();
 		{
 			$ColTitle = $col->title;
 			$ColTitle = htmlspecialchars($ColTitle, ENT_QUOTES);
-			$ColName = $col->presenter;
+			$ColName = $col->presentor;
 			$ColName = htmlspecialchars($ColName, ENT_QUOTES);
 			$ColLoca = $col->location;
 			$ColLoca = htmlspecialchars($ColLoca, ENT_QUOTES);
@@ -188,15 +225,11 @@ addNewResearch();
 			//Presenter photo here?
 			$StandardHourTime = date("g:i a", strtotime("$col->time"));
 			echo "<p>$StandardHourTime, $col->date, $col->location</p>";
-			echo "<p>$col->presenter</p>";
+			echo "<p>$col->presentor</p>";
 			echo "<p>$col->description</p>";
 					
 			echo "<p>";
-			//if(User::hasPermission("ColloquiumPermission"))
-			//{
-				echo "<input type='submit' name='delete' value='Delete'>";
-           			echo "<input type='submit' name='update' value='Update'>";
-			//}
+           		echo "<input type='submit' name='update' value='Update'>";
 			echo "</p>";
 			
 			echo "</div>";

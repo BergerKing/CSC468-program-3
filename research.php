@@ -69,7 +69,7 @@ function parseMol($mvalues)
 
 }
 
-function addNewResearch ()
+function addNewRes ()
 {
 	$file = 'Research.xml';
 
@@ -77,7 +77,7 @@ function addNewResearch ()
 
 	$galleries = $xml->moldb;
 
-	$gallery = $galleries->addChild('molecule');
+	$gallery = $xml->addChild('molecule');
 	$gallery->addChild('name', 'info');
 	$gallery->addChild('title', 'info');
 	$gallery->addChild('degree', 'info');
@@ -85,8 +85,7 @@ function addNewResearch ()
 	$gallery->addChild('research', 'info');
 	$gallery->addChild('website', 'info');
 	$gallery->addChild('image', 'info');
-	
-	echo($xml);
+		
 	$xml->asXML($file);
 }
 
@@ -114,8 +113,56 @@ echo("<br><br>");
 print_r($db[1]);
 echo("<br><br>");
 print_r($db[1]->title);
-addNewResearch();
+addNewRes();
 */
+//addNewRes();
+
+
+if(isset($_POST['send']))
+	{
+		if(empty($_POST['name'])) 
+  		{
+    			$errorMessage = "Please enter a name!";
+			echo "$errorMessage <br>";
+  		}
+		if(empty($_POST['degree'])) 
+  		{
+    			$errorMessage = "Please enter a degree type or title!";
+			echo "$errorMessage <br>";
+  		}
+		if(empty($_POST['level'])) 
+  		{
+    			$errorMessage = "Please enter a degree level (PhD, Student, Etc...)!";
+			echo "$errorMessage <br>";
+  		}
+		if(empty($_POST['university'])) 
+  		{
+    			$errorMessage = "Please enter a university!";
+			echo "$errorMessage <br>";
+  		}
+		if(empty($_POST['research'])) 
+  		{
+    			$errorMessage = "Please enter research areas!";
+			echo "$errorMessage <br>";
+  		}
+
+		
+  		if(empty($errorMessage)) 
+  		{
+    			if(isset($_POST['name']) and isset($_POST['degree']) and isset($_POST['level']) and isset($_POST['university']) and isset($_POST['research'])) {
+			$name = $_POST['name'];
+			$degree = $_POST['degree'];
+			$level = $_POST['level'];
+			$university = $_POST['university'];
+			$research = $_POST['research'];
+			$web = $_POST['webpage'];
+			addNewRes();
+			echo "Things";
+			header("Location: Research.php");
+		
+			}
+  		}
+	}
 
 ?>
 
@@ -161,31 +208,31 @@ addNewResearch();
   <div class ="info">
 		<?php
 	  
-		//$db = readDatabase("moldb.xml");
 		$db = readDatabase("Research.xml");
-	  	//addNewResearch();
 		foreach($db as $research)
 		{
-			$ResName = $research->title;
+			$ResName = $research->name;
 			$ResName = htmlspecialchars($ResName, ENT_QUOTES);
+			$ResTitle = $research->title;
+			$ResTitle = htmlspecialchars($ResTitle, ENT_QUOTES);
 			$ResDegr = $research->degree;
 			$ResDegr = htmlspecialchars($ResDegr, ENT_QUOTES);
 			$ResUniv = $research->university;
 			$ResUniv = htmlspecialchars($ResUniv, ENT_QUOTES);
 			$ResArea = $research->research;
 			$ResArea = htmlspecialchars($ResArea, ENT_QUOTES);
-			echo "<form method='post' action='updateResearchForm.php?title=$ResName&degree=$ResDegr&university=$ResUniv&research=$ResArea&website=$research->website'>";
-			$childName = $research->title + "Text";
+			echo "<form method='post' action='updateResearchForm.php?name=$ResName&title=$ResTitle&degree=$ResDegr&university=$ResUniv&research=$ResArea&website=$research->website'>";
+			
 			echo "<div class = 'dropDown' onclick='expandInfo(this)'>";
-			echo "<p align = left class ='left'>$research->title</p>";
+			echo "<p align = left class ='left'> $research->name</p>";
 			echo "<div class = 'displayText'>";
 			echo "<hr>";
-			//Presenter photo here?
-			echo "<p>$research->degree, $research->university</p>";
+
+			echo "<p>$research->title: $research->degree, $research->university</p>";
 			echo "<p>Research Areas: $research->research</p>";
 			echo "<a href='$research->website'>$research->website</a>";
 			echo "<p>";
-			echo "<input type='submit' name='delete' value='Delete'>";
+			
            		echo "<input type='submit' name='update' value='Update'>";
 			echo "</p>";
 			echo "</div>";
